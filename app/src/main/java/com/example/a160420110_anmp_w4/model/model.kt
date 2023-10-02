@@ -20,6 +20,7 @@ data class Phone(
     val color:String?,
     val price:Double?,
     val storageGB:Int,
+    val photoPhone:String?,
     val features:List<String>,
     val cameraSpecs:Specs?
 )
