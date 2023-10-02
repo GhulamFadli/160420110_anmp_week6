@@ -23,11 +23,11 @@ class PhoneListAdapter(val phones:ArrayList<Phone>)
     }
 
     override fun onBindViewHolder(holder: PhoneViewHolder, position: Int) {
-        var txtResult =
+        val txtResult =
             holder.itemView.findViewById<TextView>(R.id.txtResult)
-        var brand = phones[position].brand
-        var model = phones[position].model
-        var releaseYear = phones[position].releaseYear
+        val brand = phones[position].brand
+        val model = phones[position].model
+        val releaseYear = phones[position].releaseYear
         txtResult.text = "$brand, $model, $releaseYear"
     }
     fun updatePhoneList(newPhoneList: ArrayList<Phone>) {
