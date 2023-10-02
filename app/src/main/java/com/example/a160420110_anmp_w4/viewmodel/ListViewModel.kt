@@ -48,5 +48,4 @@ class ListViewModel(application: Application):
         super.onCleared()
         queue?.cancelAll(TAG)
     }
-
 }
