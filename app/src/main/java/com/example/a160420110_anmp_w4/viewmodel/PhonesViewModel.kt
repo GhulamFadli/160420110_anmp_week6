@@ -10,7 +10,6 @@ import com.android.volley.RequestQueue
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.a160420110_anmp_w4.model.Phone
-import com.example.a160420110_anmp_w4.model.Student
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.util.ArrayList

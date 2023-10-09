@@ -16,7 +16,6 @@ import com.example.a160420110_anmp_w4.R
 import com.example.a160420110_anmp_w4.viewmodel.ListViewModel
 
 class StudentListFragment : Fragment() {
-
     private lateinit var viewModel: ListViewModel
     private val adapter = StudentListAdapter(arrayListOf())
 
@@ -38,15 +37,10 @@ class StudentListFragment : Fragment() {
         recView.adapter = adapter
 
         val refreshLayout = view.findViewById<SwipeRefreshLayout>(R.id.refreshLayout)
-//        val txtError = view.findViewById<TextView>(R.id.txtError)
-//        val progressLoad = view.findViewById<ProgressBar>(R.id.progressLoad)
 
         observeViewModel()
         
         refreshLayout.setOnRefreshListener {
-//            recView.visibility = View.GONE
-//            txtError.visibility = View.GONE
-//            progressLoad.visibility = View.VISIBLE
             viewModel.refresh()
             refreshLayout.isRefreshing = false
         }

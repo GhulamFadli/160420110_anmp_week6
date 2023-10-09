@@ -37,6 +37,7 @@ class PhoneListFragment : Fragment() {
         recViewPhone.adapter = adapter
 
         val refreshLayoutPh = view.findViewById<SwipeRefreshLayout>(R.id.refreshLayoutPh)
+
         observeViewModel()
 
         refreshLayoutPh.setOnRefreshListener {
@@ -58,7 +59,7 @@ class PhoneListFragment : Fragment() {
         })
         viewModel.loadingLD.observe(viewLifecycleOwner, Observer {
             val progressLoad = view?.findViewById<ProgressBar>(R.id.progressLoad)
-            val recView = view?.findViewById<RecyclerView>(R.id.recView)
+            val recView = view?.findViewById<RecyclerView>(R.id.recViewPhone)
             if(it == true) {
                 recView?.visibility = View.GONE
                 progressLoad?.visibility = View.VISIBLE

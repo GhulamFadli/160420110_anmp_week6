@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.a160420110_anmp_w4.R
 import com.example.a160420110_anmp_w4.model.Phone
+import com.squareup.picasso.Picasso
 
 class PhoneListAdapter(val phones:ArrayList<Phone>)
     :RecyclerView.Adapter<PhoneListAdapter.PhoneViewHolder>() {
@@ -40,7 +41,8 @@ class PhoneListAdapter(val phones:ArrayList<Phone>)
         holder.txtModel.text = "Model: " + phones[position].model
         holder.txtColor.text = "Color: " + phones[position].color
         holder.txtPrice.text = "Price: " + phones[position].price.toString()
-//        holder.photoPhone.setImageResource(phones[position].photoPhone.hashCode())
+        val imgPhone =phones[position].photoPhone
+        Picasso.get().load(imgPhone).into(holder.photoPhone)
     }
     fun updatePhoneList(newPhoneList: ArrayList<Phone>) {
         phones.clear()
