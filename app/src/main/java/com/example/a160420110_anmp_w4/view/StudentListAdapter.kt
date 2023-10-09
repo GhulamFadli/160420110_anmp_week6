@@ -4,11 +4,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.a160420110_anmp_w4.R
 import com.example.a160420110_anmp_w4.model.Student
+import com.squareup.picasso.Picasso
 
 class StudentListAdapter (val studentList:ArrayList<Student>)
     :RecyclerView.Adapter<StudentListAdapter.StudentViewHolder>() {
@@ -25,17 +27,26 @@ class StudentListAdapter (val studentList:ArrayList<Student>)
     }
 
     override fun onBindViewHolder(holder: StudentViewHolder, position: Int) {
-        val txtId = holder.itemView.findViewById<TextView>(R.id.txtId)
-        val txtName = holder.itemView.findViewById<TextView>(R.id.txtName)
-        val btnDetail = holder.itemView.findViewById<Button>(R.id.btnDetail)
+        with(holder.itemView){
+            val txtId = findViewById<TextView>(R.id.txtId)
+            val txtName = findViewById<TextView>(R.id.txtName)
+            val btnDetail = findViewById<Button>(R.id.btnDetail)
+            val imgPhoto = findViewById<ImageView>(R.id.imageViewList)
 
-        txtId.text = studentList[position].id
-        txtName.text = studentList[position].name
+            val picasso = Picasso.Builder(this.context)
+            picasso.listener { picasso, uri, exception ->
+                exception.printStackTrace()
+            }
+            picasso.build().load(studentList[position].photoUrl).into(imgPhoto)
 
-        val studentId = studentList[position].id
-        btnDetail.setOnClickListener {
-            val action = StudentListFragmentDirections.actionStudentDetail(studentId.toString())
-            Navigation.findNavController(it).navigate(action)
+            txtId.text = studentList[position].id
+            txtName.text = studentList[position].name
+
+            val studentId = studentList[position].id
+            btnDetail.setOnClickListener {
+                val action = StudentListFragmentDirections.actionStudentDetail(studentId.toString())
+                Navigation.findNavController(it).navigate(action)
+            }
         }
     }
     fun updateStudentList(newStudentList: ArrayList<Student>) {
